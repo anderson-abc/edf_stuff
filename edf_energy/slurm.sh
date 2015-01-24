@@ -36,11 +36,6 @@ function interm  {
 
 # Collecting other informations from slurm database, to update our last set
 function update_job {
-t_start=$(mysql -h $host -D $db_slurm -u $user_slurm -p$pass -B -N -e "SELECT time_start FROM $job_table WHERE id_job=$1")
-t_end=$(mysql -h $host -D $db_slurm -u $user_slurm -p$pass -B -N -e "SELECT time_end FROM $job_table WHERE id_job=$1")
-account=$(mysql -h $host -D $db_slurm -u $user_slurm -p$pass -B -N -e "SELECT account FROM $job_table WHERE id_job=$1")
-nodelist1=$(mysql -h $host -D $db_slurm -u $user_slurm -p$pass -B -N -e "SELECT nodelist FROM $job_table WHERE id_job=$1")
-
 if [ $t_end = "0" ]; then
 psql --host=$host --user=$user $db << EOF
 delete from $table_jem_job where id_job_slurm=$1;
