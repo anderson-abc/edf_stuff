@@ -1,7 +1,4 @@
 #!/bin/bash
-host="localhost"
-user="G59874"
-table="jem"
 
 # Function to insert informations to database.
 function sql_insert {
